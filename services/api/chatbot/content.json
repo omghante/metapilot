@@ -1,0 +1,63 @@
+{
+  "platform_info": {
+    "overview": "WhatsApp Marketing API is a multi-tenant SaaS solution for WhatsApp marketing with features like contact management, campaign creation, message templates, and analytics.",
+    "features": [
+      {
+        "name": "WhatsApp Business API integration",
+        "description": "Connect your WhatsApp Business account to send and receive messages programmatically."
+      },
+      {
+        "name": "Contact management and segmentation",
+        "description": "Manage your contacts, add tags, and segment them for targeted campaigns."
+      },
+      {
+        "name": "Campaign creation and management",
+        "description": "Create and manage marketing campaigns to reach your contacts."
+      },
+      {
+        "name": "Message templates",
+        "description": "Create reusable message templates for consistent communication."
+      },
+      {
+        "name": "Analytics and reporting",
+        "description": "Track message delivery, engagement, and campaign performance."
+      },
+      {
+        "name": "Multi-tenant architecture",
+        "description": "Support for agencies and multiple client tenants with role-based access."
+      }
+    ],
+    "setup": {
+      "whatsapp_api": "To set up WhatsApp Business API, you need to connect your WhatsApp Business account through the settings page. You'll need to provide your Meta access token and phone number ID.",
+      "campaigns": "To create a campaign, go to the campaigns section, click 'Create New Campaign', select your target audience, choose a message template, and schedule or send immediately.",
+      "contacts": "You can add contacts manually or import them via CSV. You can also tag contacts for segmentation.",
+      "templates": "Templates can be created in the templates section. You can use text, media, or interactive templates based on your needs."
+    },
+    "user_roles": [
+      {
+        "role": "Super Admin",
+        "permissions": "Full access to all features and settings across all tenants"
+      },
+      {
+        "role": "Agency Admin",
+        "permissions": "Manage multiple client tenants and their users"
+      },
+      {
+        "role": "Tenant Admin",
+        "permissions": "Manage users and settings for their own tenant"
+      },
+      {
+        "role": "User",
+        "permissions": "Access to messaging and campaigns within their tenant"
+      }
+    ],
+    "common_questions": {
+      "hello": "Hello, how can I help you?",
+      "how_to_create_campaign": "To create a campaign, navigate to the Campaigns section in your dashboard, click on 'Create New Campaign', fill in the campaign details including name, target audience, and message template, then schedule or send immediately. Make sure you have sufficient credits and your WhatsApp Business API is properly configured.",
+      "how_to_manage_contacts": "You can manage contacts in the Contacts section. You can add contacts manually, import from CSV, or view existing contacts. You can also add tags to contacts for segmentation purposes.",
+      "how_to_use_templates": "Templates can be created and managed in the Templates section. You can create text, media, or interactive templates. Once created, templates can be used in campaigns or for direct messaging.",
+      "how_to_view_analytics": "Analytics can be accessed from the Dashboard section. Here you can view message delivery rates, engagement metrics, and campaign performance statistics.",
+      "how_to_configure_settings": "Tenant settings can be accessed in the Settings section. Here you can configure API keys, user permissions, and other tenant-specific configurations."
+    }
+  }
+}

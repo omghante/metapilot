@@ -1,0 +1,53 @@
+name: Deploy — Production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      service:
+        description: "Service to deploy (api / web / all)"
+        required: true
+        default: all
+        type: choice
+        options: [api, web, all]
+
+jobs:
+  deploy-api:
+    name: Deploy API
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.service == 'api' || github.event.inputs.service == 'all' || github.event_name == 'push' }}
+    environment: production
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build API Docker image
+        run: |
+          docker build -t metapilot-api:${{ github.sha }} services/api/
+
+      - name: Deploy to Railway
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: |
+          npx -y @railway/cli@latest up --service api --dir services/api/
+
+  deploy-web:
+    name: Deploy Web
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.service == 'web' || github.event.inputs.service == 'all' || github.event_name == 'push' }}
+    environment: production
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Deploy to Railway
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: |
+          npx -y @railway/cli@latest up --service dashboard-web --dir apps/

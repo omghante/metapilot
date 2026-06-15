@@ -1,0 +1,63 @@
+# Multi-Tenant SaaS API - Requirements
+# This file is for Render deployment
+
+# Django & DRF
+django>=5.0
+djangorestframework>=3.15
+drf-spectacular>=0.27
+
+# JWT Authentication
+djangorestframework-simplejwt>=5.3
+
+# Database
+psycopg2-binary>=2.9
+dj-database-url>=2.1
+
+# Encryption
+cryptography>=42.0
+
+# Environment
+python-dotenv>=1.0
+
+# CORS
+django-cors-headers>=4.3
+
+# Production
+gunicorn>=21.0
+whitenoise>=6.0
+gevent>=24.0
+
+# HTTP Requests (for WhatsApp API)
+requests>=2.31
+
+# File Processing (CSV/XLSX import)
+pandas>=2.0
+openpyxl>=3.1
+
+# Image Processing
+Pillow>=10.0
+
+# Celery & Redis (Background Tasks)
+celery>=5.3
+redis>=5.0
+django-celery-beat>=2.5
+
+# Async HTTP Client (for high-performance scheduler)
+httpx>=0.25
+
+# PDF Processing (for WhatsApp chatbot)
+PyPDF2>=3.0.0
+
+# Timezone handling
+pytz>=2024.1
+
+# Phone number validation (E.164 format)
+phonenumbers>=8.13
+
+# Nested async support (for Celery with gevent/eventlet pools)
+nest_asyncio>=1.6
+
+# Django Channels – WebSocket support for real-time inbox
+channels>=4.0
+channels-redis>=4.2
+daphne>=4.0

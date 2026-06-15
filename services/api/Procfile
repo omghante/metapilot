@@ -1,0 +1,11 @@
+# Procfile — Defines all service types
+# Daphne (ASGI) is required for Django Channels WebSocket support (inbox real-time).
+
+# Main Web API (Django + Daphne ASGI)
+web: daphne -b 0.0.0.0 -p ${PORT:-8000} core.asgi:application
+
+# Celery Worker (Background job processor) - Using gevent for low memory + high concurrency
+worker: celery -A core worker -l info -P gevent -c 200 -Q celery,scheduler,jobs
+
+# Celery Beat (Scheduled task scheduler)
+beat: celery -A core beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler

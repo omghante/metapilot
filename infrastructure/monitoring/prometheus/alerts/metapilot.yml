@@ -1,0 +1,63 @@
+groups:
+  - name: metapilot-api
+    rules:
+      # API response time too high
+      - alert: APIHighLatency
+        expr: histogram_quantile(0.95, rate(django_http_requests_latency_seconds_bucket[5m])) > 2
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "API p95 latency above 2s"
+          description: "p95 latency is {{ $value }}s for the last 5 minutes."
+
+      # High error rate
+      - alert: APIHighErrorRate
+        expr: rate(django_http_responses_total_by_status_total{status=~"5.."}[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "API 5xx error rate above 5%"
+
+  - name: metapilot-celery
+    rules:
+      # Celery queue backlog growing
+      - alert: CeleryQueueBacklog
+        expr: celery_queue_length{queue="jobs"} > 1000
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Celery jobs queue backlog > 1000 tasks"
+
+      # High failed task rate
+      - alert: CeleryHighFailureRate
+        expr: rate(celery_tasks_total{state="FAILURE"}[1h]) > 10
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "More than 10 Celery task failures per hour"
+
+  - name: metapilot-db
+    rules:
+      # PostgreSQL connections near limit
+      - alert: PostgresConnectionsHigh
+        expr: pg_stat_activity_count > (pg_settings_max_connections * 0.85)
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "PostgreSQL connections above 85% of max"
+
+  - name: metapilot-redis
+    rules:
+      # Redis memory usage high
+      - alert: RedisMemoryHigh
+        expr: redis_memory_used_bytes / redis_memory_max_bytes > 0.85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Redis memory usage above 85%"

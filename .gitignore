@@ -1,0 +1,115 @@
+# ============================================================
+# OS & Editor
+# ============================================================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# ============================================================
+# IDE / Editor configs
+# ============================================================
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# VS Code (uncomment if you don't want to share launch configs)
+# .vscode/
+
+.atom/
+
+# ============================================================
+# AI / Context tools (should never be committed)
+# ============================================================
+.gitcontext/
+.projectcontext/
+.gemini/
+
+# ============================================================
+# Python / Django
+# ============================================================
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+pip-wheel-metadata/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+db.sqlite3
+db.sqlite3-journal
+staticfiles/
+media/media_assets/
+logs/
+pids/
+*.pid
+*.log
+
+# ============================================================
+# Node / Next.js / TypeScript
+# ============================================================
+node_modules/
+.next/
+out/
+.nuxt/
+.cache/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.yarn/cache
+.yarn/install-state.gz
+.pnpm-store/
+
+# ============================================================
+# Environment / Secrets
+# ============================================================
+.env
+.env.*
+!.env.example
+.env.local
+.env.*.local
+!.env.*.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+secrets/
+.secrets/
+
+# ============================================================
+# Database / PostgreSQL
+# ============================================================
+pgdata/
+wal_archive/
+*.dump
+*.dump.enc
+*.dump.enc.sha256
+!database/config/*.conf
+
+# ============================================================
+# Docker
+# ============================================================
+docker-compose.override.yml
+
+# ============================================================
+# Misc build / temp
+# ============================================================
+.build/
+.buildlog/
+.history
+.svn/
+*.class
+coverage/

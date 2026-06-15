@@ -1,0 +1,68 @@
+name: Bug Report
+description: Report a bug or unexpected behavior
+labels: [bug, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug. Please fill out all sections as completely as possible.
+
+  - type: input
+    id: summary
+    attributes:
+      label: Bug Summary
+      description: A short description of what the bug is.
+      placeholder: "e.g. Campaign launch fails silently when contacts list is empty"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior.
+      placeholder: |
+        1. Go to Campaigns
+        2. Create campaign with 0 contacts
+        3. Click Launch
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      placeholder: "The UI should show a validation error..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      placeholder: "Nothing happens, no error shown..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: service
+    attributes:
+      label: Affected Service
+      options:
+        - API (backend)
+        - Dashboard (frontend)
+        - Scheduler
+        - Inbox / WebSocket
+        - AI Chatbot
+        - Webhooks
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant Logs
+      description: Paste any relevant error logs here.
+      render: shell
